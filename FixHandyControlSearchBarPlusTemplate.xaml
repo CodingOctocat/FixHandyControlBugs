@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
-    <!--  Fix HandyControl Version="3.4.0"  -->
+    <!--  修复光标位于靠近 ClearButton 的边框时，导致 ClearButton 闪烁的问题  -->
+    <!--  修复 ClearButton 动态占用控件宽度的问题  -->
 
     <ControlTemplate x:Key="SearchBarPlusTopTemplate"
                      TargetType="hc:SearchBar">
@@ -32,18 +33,14 @@
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-            <Grid x:Name="root"
-                  Grid.Row="1"
-                  ClipToBounds="True"
-                  SnapsToDevicePixels="true">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+            <hc:SimplePanel x:Name="root"
+                            Grid.Row="1"
+                            ClipToBounds="True"
+                            SnapsToDevicePixels="true">
                 <Button Name="ButtonClear"
                         Width="Auto"
                         Height="Auto"
-                        Margin="8,0,0,0"
+                        Margin="0,0,28,0"
                         Padding="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -56,12 +53,10 @@
                         Background="{TemplateBinding Background}"
                         BorderThickness="0"
                         Command="{x:Static hc:ControlCommands.Clear}"
-                        Foreground="{Binding BorderBrush, ElementName=border}"
+                        Foreground="{Binding ElementName=border, Path=BorderBrush}"
                         Style="{StaticResource ButtonIcon}"
                         Visibility="Collapsed" />
-                <TextBlock Grid.Row="0"
-                           Grid.Column="0"
-                           Margin="2"
+                <TextBlock Margin="2"
                            Padding="{TemplateBinding Padding}"
                            HorizontalAlignment="Stretch"
                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -70,21 +65,17 @@
                            Visibility="{TemplateBinding Text,
                                                         Converter={StaticResource String2VisibilityReConverter}}" />
                 <ScrollViewer x:Name="PART_ContentHost"
-                              Grid.Row="0"
-                              Grid.Column="0"
-                              Margin="0"
+                              Margin="0,0,42,0"
                               Padding="{TemplateBinding Padding}"
                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                               Focusable="false"
                               HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Hidden" />
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Width="Auto"
+                <Button Width="Auto"
                         Height="Auto"
                         Margin="0,1,1,1"
                         Padding="4,0,8,0"
-                        HorizontalAlignment="Stretch"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Stretch"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
@@ -96,7 +87,7 @@
                         Focusable="False"
                         Foreground="{TemplateBinding BorderBrush}"
                         Style="{StaticResource ButtonIcon}" />
-            </Grid>
+            </hc:SimplePanel>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
@@ -148,18 +139,14 @@
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-            <Grid x:Name="root"
-                  Grid.Column="1"
-                  ClipToBounds="True"
-                  SnapsToDevicePixels="true">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+            <hc:SimplePanel x:Name="root"
+                            Grid.Row="1"
+                            ClipToBounds="True"
+                            SnapsToDevicePixels="true">
                 <Button Name="ButtonClear"
                         Width="Auto"
                         Height="Auto"
-                        Margin="8,0,0,0"
+                        Margin="0,0,28,0"
                         Padding="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -172,12 +159,10 @@
                         Background="{TemplateBinding Background}"
                         BorderThickness="0"
                         Command="{x:Static hc:ControlCommands.Clear}"
-                        Foreground="{Binding BorderBrush, ElementName=border}"
+                        Foreground="{Binding ElementName=border, Path=BorderBrush}"
                         Style="{StaticResource ButtonIcon}"
                         Visibility="Collapsed" />
-                <TextBlock Grid.Row="0"
-                           Grid.Column="0"
-                           Margin="2"
+                <TextBlock Margin="2"
                            Padding="{TemplateBinding Padding}"
                            HorizontalAlignment="Stretch"
                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -186,21 +171,17 @@
                            Visibility="{TemplateBinding Text,
                                                         Converter={StaticResource String2VisibilityReConverter}}" />
                 <ScrollViewer x:Name="PART_ContentHost"
-                              Grid.Row="0"
-                              Grid.Column="0"
-                              Margin="0"
+                              Margin="0,0,42,0"
                               Padding="{TemplateBinding Padding}"
                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                               Focusable="false"
                               HorizontalScrollBarVisibility="Hidden"
                               VerticalScrollBarVisibility="Hidden" />
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Width="Auto"
+                <Button Width="Auto"
                         Height="Auto"
                         Margin="0,1,1,1"
                         Padding="4,0,8,0"
-                        HorizontalAlignment="Stretch"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Stretch"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"
@@ -212,7 +193,7 @@
                         Focusable="False"
                         Foreground="{TemplateBinding BorderBrush}"
                         Style="{StaticResource ButtonIcon}" />
-            </Grid>
+            </hc:SimplePanel>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
@@ -251,4 +232,5 @@
     <Style x:Key="SearchBarPlus"
            BasedOn="{StaticResource SearchBarPlusBaseStyle}"
            TargetType="hc:SearchBar" />
+
 </ResourceDictionary>

@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
-    <!--  Fix HandyControl Version="3.4.0"  -->
+    <!--  修复光标位于靠近 ClearButton 的边框时，导致 ClearButton 闪烁的问题  -->
+    <!--  修复 ClearButton 动态占用控件宽度的问题  -->
 
     <ControlTemplate x:Key="TextBoxPlusTopTemplate"
                      TargetType="{x:Type hc:TextBox}">
@@ -47,7 +48,7 @@
                            Visibility="{TemplateBinding Text,
                                                         Converter={StaticResource String2VisibilityReConverter}}" />
                 <ScrollViewer x:Name="PART_ContentHost"
-                              Margin="0"
+                              Margin="0,0,22,0"
                               Padding="{TemplateBinding Padding}"
                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                               Focusable="false"
@@ -56,7 +57,7 @@
                 <Button Name="ButtonClear"
                         Width="Auto"
                         Height="Auto"
-                        Margin="8,0"
+                        Margin="0,0,8,0"
                         Padding="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -69,7 +70,7 @@
                         Background="{TemplateBinding Background}"
                         BorderThickness="0"
                         Command="{x:Static hc:ControlCommands.Clear}"
-                        Foreground="{Binding BorderBrush, ElementName=border}"
+                        Foreground="{Binding ElementName=border, Path=BorderBrush}"
                         Style="{StaticResource ButtonIcon}"
                         Visibility="Collapsed" />
             </hc:SimplePanel>
@@ -141,7 +142,7 @@
                            Visibility="{TemplateBinding Text,
                                                         Converter={StaticResource String2VisibilityReConverter}}" />
                 <ScrollViewer x:Name="PART_ContentHost"
-                              Margin="0"
+                              Margin="0,0,22,0"
                               Padding="{TemplateBinding Padding}"
                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                               Focusable="false"
@@ -150,7 +151,7 @@
                 <Button Name="ButtonClear"
                         Width="Auto"
                         Height="Auto"
-                        Margin="8,0"
+                        Margin="0,0,8,0"
                         Padding="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -163,7 +164,7 @@
                         Background="{TemplateBinding Background}"
                         BorderThickness="0"
                         Command="{x:Static hc:ControlCommands.Clear}"
-                        Foreground="{Binding BorderBrush, ElementName=border}"
+                        Foreground="{Binding ElementName=border, Path=BorderBrush}"
                         Style="{StaticResource ButtonIcon}"
                         Visibility="Collapsed" />
             </hc:SimplePanel>
