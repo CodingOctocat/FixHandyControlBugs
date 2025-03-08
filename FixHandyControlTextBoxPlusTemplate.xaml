@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
+    <!--  TextBoxPlusBaseStyle  -->
     <!--  修复光标位于靠近 ClearButton 的边框时，导致 ClearButton 闪烁的问题  -->
     <!--  修复 ClearButton 动态占用控件宽度的问题  -->
 
@@ -78,24 +79,24 @@
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="border" Property="UIElement.Opacity" Value="0.4" />
-                <Setter TargetName="root" Property="UIElement.Opacity" Value="0.4" />
+                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter TargetName="root" Property="Opacity" Value="0.4" />
             </Trigger>
-            <Trigger SourceName="root" Property="UIElement.IsMouseOver" Value="true">
+            <Trigger SourceName="root" Property="IsMouseOver" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="root" Property="UIElement.IsMouseOver" Value="true" />
+                    <Condition Property="IsMouseOver" Value="true" />
                     <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+                    <Condition Property="IsReadOnly" Value="False" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
             </MultiTrigger>
-            <Trigger Property="UIElement.IsFocused" Value="true">
+            <Trigger Property="IsFocused" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
-
     </ControlTemplate>
 
     <ControlTemplate x:Key="TextBoxPlusLeftTemplate"

@@ -3,6 +3,7 @@
                     xmlns:hc="https://handyorg.github.io/handycontrol"
                     xmlns:system="clr-namespace:System;assembly=netstandard">
 
+    <!--  ComboBoxPlusBaseStyle  -->
     <!--  修复 ClearButton 动态占用控件宽度的问题  -->
 
     <ControlTemplate x:Key="ComboBoxPlusEditableLeftTemplate"
