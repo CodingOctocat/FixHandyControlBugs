@@ -80,9 +80,9 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter TargetName="border" Property="Opacity" Value="0.4" />
-                <Setter TargetName="root" Property="Opacity" Value="0.4" />
+                <Setter TargetName="" Property="Opacity" Value="0.4" />
             </Trigger>
-            <Trigger SourceName="root" Property="IsMouseOver" Value="true">
+            <Trigger SourceName="border" Property="IsMouseOver" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
             </Trigger>
             <MultiTrigger>
@@ -175,7 +175,7 @@
                 <Setter TargetName="border" Property="Opacity" Value="0.4" />
                 <Setter TargetName="root" Property="Opacity" Value="0.4" />
             </Trigger>
-            <Trigger SourceName="root" Property="IsMouseOver" Value="true">
+            <Trigger SourceName="border" Property="IsMouseOver" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
             </Trigger>
             <MultiTrigger>
@@ -204,5 +204,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
 
 </ResourceDictionary>
